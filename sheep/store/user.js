@@ -1,13 +1,11 @@
 import { defineStore } from 'pinia';
-import $share from '@/sheep/platform/share';
 import { clone, cloneDeep } from 'lodash-es';
-import cart from './cart';
+
 import app from './app';
 import { showAuthModal } from '@/sheep/hooks/useModal';
 import UserApi from '@/sheep/api/member/user';
 import PayWalletApi from '@/sheep/api/pay/wallet';
-import OrderApi from '@/sheep/api/trade/order';
-import CouponApi from '@/sheep/api/promotion/coupon';
+
 
 // 默认用户信息
 const defaultUserInfo = {
@@ -66,20 +64,6 @@ const user = defineStore({
       this.userWallet = data;
     },
 
-    // 获取订单、优惠券等其他资产信息
-    getNumData() {
-      OrderApi.getOrderCount().then((res) => {
-        if (res.code === 0) {
-          this.numData.orderCount = res.data;
-        }
-      });
-      CouponApi.getUnusedCouponCount().then((res) => {
-        if (res.code === 0) {
-          this.numData.unusedCouponCount = res.data;
-        }
-      });
-    },
-
     // 设置 token
     setToken(token = '', refreshToken = '') {
       if (token === '') {
@@ -111,7 +95,6 @@ const user = defineStore({
       // 获取最新信息
       await this.getInfo();
       this.getWallet();
-      this.getNumData();
       return this.userInfo;
     },
 
@@ -123,26 +106,17 @@ const user = defineStore({
       this.userInfo = clone(defaultUserInfo);
       this.userWallet = clone(defaultUserWallet);
       this.numData = cloneDeep(defaultNumData);
-      // 清空购物车的缓存
-      cart().emptyList();
+
     },
 
     // 登录后，加载各种信息
     async loginAfter() {
       await this.updateUserData();
 
-      // 加载购物车
-      cart().getList();
-      // 登录后设置全局分享参数
-      $share.getShareInfo();
-
       // 提醒绑定手机号
       if (app().platform.bind_mobile && !this.userInfo.mobile) {
         showAuthModal('changeMobile');
       }
-
-      // 绑定推广员
-      $share.bindBrokerageUser();
     },
 
     // 登出系统

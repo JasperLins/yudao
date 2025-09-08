@@ -38,12 +38,7 @@
       ></message-input>
     </tools-popup>
     <!--  商品订单选择  -->
-    <SelectPopup
-      :mode="chat.selectMode"
-      :show="chat.showSelect"
-      @select="onSelect"
-      @close="chat.showSelect = false"
-    />
+
   </s-layout>
 </template>
 
@@ -53,7 +48,7 @@
   import sheep from '@/sheep';
   import ToolsPopup from '@/pages/chat/components/toolsPopup.vue';
   import MessageInput from '@/pages/chat/components/messageInput.vue';
-  import SelectPopup from '@/pages/chat/components/select-popup.vue';
+
   import {
     KeFuMessageContentTypeEnum,
     WebSocketMessageTypeConstants,

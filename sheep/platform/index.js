@@ -15,8 +15,8 @@ import { isWxBrowser } from '@/sheep/helper/utils';
 // #endif
 import wechat from './provider/wechat/index.js';
 import apple from './provider/apple';
-import share from './share';
-import Pay from './pay';
+
+
 
 const device = uni.getWindowInfo();
 
@@ -74,10 +74,6 @@ const useProvider = (_provider = '') => {
   if (_provider === 'apple') return apple;
 };
 
-// 支付服务转发
-const pay = (payment, orderType, orderSN) => {
-  return new Pay(payment, orderType, orderSN);
-};
 
 /**
  * 检查更新 (只检查小程序和App)
@@ -163,8 +159,6 @@ const _platform = {
   useProvider,
   checkUpdate,
   checkNetwork,
-  pay,
-  share,
   load,
   capsule,
   navbar,

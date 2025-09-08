@@ -1,4 +1,3 @@
-import DiyApi from '@/sheep/api/promotion/diy';
 import { getTenantByWebsite } from '@/sheep/api/infra/tenant';
 import { getTenantId } from '@/sheep/request';
 import { defineStore } from 'pinia';

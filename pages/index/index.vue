@@ -23,7 +23,6 @@
   import { computed } from 'vue';
   import { onLoad, onPageScroll, onPullDownRefresh } from '@dcloudio/uni-app';
   import sheep from '@/sheep';
-  import $share from '@/sheep/platform/share';
 
   onLoad((options) => {
     // #ifdef MP
@@ -35,10 +34,6 @@
     }
     // #endif
 
-    // 解析分享信息
-    if (options.spm) {
-      $share.decryptSpm(options.spm);
-    }
 
     // 进入指定页面(完整页面路径)
     if (options.page) {

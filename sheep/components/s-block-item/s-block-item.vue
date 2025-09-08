@@ -4,10 +4,7 @@
     <s-search-block v-if="type === 'SearchBar'" :data="data" :styles="styles" :navbar="false" />
     <!-- 基础组件：公告栏 -->
     <s-notice-block v-if="type === 'NoticeBar'" :data="data" />
-    <!-- 基础组件：菜单导航 -->
-    <s-menu-button v-if="type === 'MenuSwiper'" :data="data" :styles="styles" />
-    <!-- 基础组件：列表导航 -->
-    <s-menu-list v-if="type === 'MenuList'" :data="data" />
+
     <!-- 基础组件：宫格导航 -->
     <s-menu-grid v-if="type === 'MenuGrid'" :data="data" :styles="styles" />
     <!-- 基础组件：弹窗广告 -->
@@ -35,18 +32,11 @@
     <!-- 商品组件：商品栏 -->
     <s-goods-shelves v-if="type === 'ProductList'" :data="data" :styles="styles" />
 
-    <!-- 营销组件：拼团 -->
-    <s-groupon-block v-if="type === 'PromotionCombination'" :data="data" :styles="styles" />
     <!-- 营销组件：秒杀 -->
-    <s-seckill-block v-if="type === 'PromotionSeckill'" :data="data" :styles="styles" />
     <!-- 营销组件：积分商城 -->
-    <s-point-block v-if="type === 'PromotionPoint'" :data="data" :styles="styles" />
     <!-- 营销组件：小程序直播（暂时没有这个功能） -->
-    <s-live-block v-if="type === 'MpLive'" :data="data" :styles="styles" />
     <!-- 营销组件：优惠券 -->
-    <s-coupon-block v-if="type === 'CouponCard'" :data="data" :styles="styles" />
     <!-- 营销组件：文章 -->
-    <s-richtext-block v-if="type === 'PromotionArticle'" :data="data" :styles="styles" />
 
     <!-- 用户组件：用户卡片 -->
     <s-user-card v-if="type === 'UserCard'" :data="data" :styles="styles" />
