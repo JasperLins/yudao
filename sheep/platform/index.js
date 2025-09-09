@@ -16,8 +16,6 @@ import { isWxBrowser } from '@/sheep/helper/utils';
 import wechat from './provider/wechat/index.js';
 import apple from './provider/apple';
 
-
-
 const device = uni.getWindowInfo();
 
 const os = uni.getDeviceInfo().platform;
@@ -73,7 +71,6 @@ const useProvider = (_provider = '') => {
   if (_provider === 'wechat') return wechat;
   if (_provider === 'apple') return apple;
 };
-
 
 /**
  * 检查更新 (只检查小程序和App)

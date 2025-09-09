@@ -9,7 +9,6 @@ const BrokerageApi = {
       data,
     });
   },
-
 };
 
 export default BrokerageApi;
