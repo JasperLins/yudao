@@ -154,6 +154,4 @@ const adaptTenant = async () => {
   }
 };
 
-
-
 export default app;

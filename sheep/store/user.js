@@ -6,7 +6,6 @@ import { showAuthModal } from '@/sheep/hooks/useModal';
 import UserApi from '@/sheep/api/member/user';
 import PayWalletApi from '@/sheep/api/pay/wallet';
 
-
 // 默认用户信息
 const defaultUserInfo = {
   avatar: '', // 头像
@@ -106,7 +105,6 @@ const user = defineStore({
       this.userInfo = clone(defaultUserInfo);
       this.userWallet = clone(defaultUserWallet);
       this.numData = cloneDeep(defaultNumData);
-
     },
 
     // 登录后，加载各种信息

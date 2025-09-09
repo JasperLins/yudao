@@ -41,7 +41,7 @@
         <slot />
 
         <!-- 底部导航 -->
-<!--        <s-tabbar v-if="tabbar !== ''" :path="tabbar" />-->
+        <!--        <s-tabbar v-if="tabbar !== ''" :path="tabbar" />-->
       </view>
     </view>
 
@@ -49,7 +49,7 @@
       <!-- 全局授权弹窗 -->
       <s-auth-modal />
       <!-- 全局分享弹窗 -->
-      <s-share-modal :shareInfo="shareInfo" />
+      <!--      <s-share-modal :shareInfo="shareInfo" />-->
       <!-- 全局快捷入口 -->
       <s-menu-tools />
     </view>
@@ -177,47 +177,47 @@
   });
 
   // 分享信息
-  const shareInfo = computed(() => {
-    if (props.onShareAppMessage === true) {
-      return sheep.$platform.share.getShareInfo();
-    } else {
-      if (!isEmpty(props.onShareAppMessage)) {
-        sheep.$platform.share.updateShareInfo(props.onShareAppMessage);
-        return props.onShareAppMessage;
-      }
-    }
-    return {};
-  });
+  // const shareInfo = computed(() => {
+  //   if (props.onShareAppMessage === true) {
+  //     return sheep.$platform.share.getShareInfo();
+  //   } else {
+  //     if (!isEmpty(props.onShareAppMessage)) {
+  //       sheep.$platform.share.updateShareInfo(props.onShareAppMessage);
+  //       return props.onShareAppMessage;
+  //     }
+  //   }
+  //   return {};
+  // });
 
   // #ifdef MP-WEIXIN
-  uni.showShareMenu({
-    withShareTicket: true,
-    menus: ['shareAppMessage', 'shareTimeline'],
-  });
+  // uni.showShareMenu({
+  //   withShareTicket: true,
+  //   menus: ['shareAppMessage', 'shareTimeline'],
+  // });
   // 微信小程序分享好友
-  onShareAppMessage(() => {
-    return {
-      title: shareInfo.value.title,
-      path: shareInfo.value.forward.path,
-      imageUrl: shareInfo.value.image,
-    };
-  });
+  // onShareAppMessage(() => {
+  //   return {
+  //     title: shareInfo.value.title,
+  //     path: shareInfo.value.forward.path,
+  //     imageUrl: shareInfo.value.image,
+  //   };
+  // });
   // 微信小程序分享朋友圈
-  onShareTimeline(() => {
-    return {
-      title: shareInfo.value.title,
-      query: shareInfo.value.forward.path,
-      imageUrl: shareInfo.value.image,
-    };
-  });
+  // onShareTimeline(() => {
+  //   return {
+  //     title: shareInfo.value.title,
+  //     query: shareInfo.value.forward.path,
+  //     imageUrl: shareInfo.value.image,
+  //   };
+  // });
   // #endif
 
   // 组件中使用 onMounted 监听页面加载，不是页面组件不使用 onShow
-  onMounted(()=>{
-    if (!isEmpty(shareInfo.value)) {
-      sheep.$platform.share.updateShareInfo(shareInfo.value);
-    }
-  })
+  // onMounted(()=>{
+  //   if (!isEmpty(shareInfo.value)) {
+  //     sheep.$platform.share.updateShareInfo(shareInfo.value);
+  //   }
+  // })
 </script>
 
 <style lang="scss" scoped>
@@ -225,16 +225,16 @@
     position: relative;
     color: var(--ui-TC);
     background-color: var(--ui-BG-1) !important;
-    z-index: 2;
+    z-index: 1;
     display: flex;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 
     .page-main {
-      position: absolute;
+      position: relative;
       z-index: 1;
       width: 100%;
-      min-height: 100%;
+      flex: 1;
       display: flex;
       flex-direction: column;
 
